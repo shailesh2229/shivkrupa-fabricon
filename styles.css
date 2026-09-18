@@ -185,7 +185,7 @@ ul {
 }
 
 .nav-logo {
-    height: 80px;
+    height: 130px;
     width: auto;
     object-fit: contain;
 }
@@ -1083,7 +1083,7 @@ ul {
 
     /* Logo size — compact for mobile navbar */
     .nav-logo {
-        height: 56px !important;
+        height: 72px !important;
     }
 
     /* Reduce nav container padding so logo+hamburger fit cleanly */
