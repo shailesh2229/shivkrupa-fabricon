@@ -1083,7 +1083,7 @@ ul {
 
     /* Logo size — mobile navbar */
     .nav-logo {
-        height: 110px !important;
+        height: 160px !important;
     }
 
     /* Reduce nav container padding so logo+hamburger fit cleanly */
@@ -1333,9 +1333,9 @@ ul {
         scroll-padding-top: 70px;
     }
 
-    /* Logo smaller */
+    /* Logo — keep large on small mobile too */
     .logo img {
-        height: 55px !important;
+        height: 140px !important;
     }
 
     /* Hero */
