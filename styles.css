@@ -207,6 +207,13 @@ ul {
     gap: 30px;
 }
 
+/* On desktop, nav-links are always visible */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex !important;
+    }
+}
+
 .nav-links li a {
     font-weight: 500;
     font-size: 0.95rem;
@@ -248,7 +255,18 @@ ul {
     min-height: 600px;
     display: flex;
     align-items: center;
-    background: linear-gradient(to right, #000000 0%, transparent 100%), url('https://images.unsplash.com/photo-1532585252327-0fa0b86a010d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 0;
 }
 
 .hero-overlay {
@@ -716,24 +734,30 @@ ul {
 @media (max-width: 768px) {
 
     /* --- Navbar --- */
+
+    /* CRITICAL: Hide nav links by default on mobile */
     .nav-links {
+        display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         background: white;
         flex-direction: column;
-        align-items: flex-start;
-        padding: 8px 24px 20px;
+        align-items: stretch;
+        padding: 0 0 16px 0;
         gap: 0;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transition: clip-path 0.35s ease;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         z-index: 999;
+        border-top: 1px solid rgba(0,0,0,0.08);
+        /* Smooth slide animation */
+        overflow: hidden;
+        animation: none;
     }
 
+    /* Show nav links when active class is added by JS */
     .nav-links.active {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        display: flex;
     }
 
     .nav-links li {
@@ -743,24 +767,50 @@ ul {
     .nav-links li a {
         display: flex;
         align-items: center;
-        padding: 12px 0;
+        padding: 14px 24px;
         font-size: 1rem;
         border-bottom: 1px solid rgba(0,0,0,0.06);
-        min-height: 44px;
+        min-height: 52px;
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links li a:hover {
+        background: rgba(19,64,116,0.06);
+        color: var(--secondary-color);
+        padding-left: 30px;
+    }
+
+    /* Remove underline pseudo-element on mobile */
+    .nav-links li a:not(.btn-primary-outline)::after {
+        display: none;
     }
 
     .nav-links li:last-child a {
         border-bottom: none;
     }
 
+    /* Contact Us button inside mobile menu */
     .nav-links li a.btn-primary-outline {
-        margin-top: 8px;
-        display: inline-flex;
-        padding: 10px 20px;
-        min-height: 44px;
+        margin: 12px 24px 4px;
+        display: flex;
+        padding: 12px 20px;
+        min-height: 48px;
         border-bottom: none;
+        border: 2px solid var(--primary-color);
+        border-radius: 8px;
+        justify-content: center;
+        font-weight: 600;
     }
 
+    .nav-links li a.btn-primary-outline:hover {
+        background: var(--primary-color);
+        color: white;
+        padding-left: 20px;
+    }
+
+    /* Show hamburger icon */
     .mobile-menu-btn {
         display: flex;
         align-items: center;
@@ -769,16 +819,44 @@ ul {
         height: 44px;
         font-size: 1.4rem;
         cursor: pointer;
+        color: var(--primary-color);
+        border-radius: 8px;
+        transition: background 0.2s;
     }
 
-    /* Logo size fix */
-    .logo img {
-        height: 70px !important;
+    .mobile-menu-btn:hover {
+        background: rgba(19,64,116,0.08);
+    }
+
+    /* Logo size — compact for mobile navbar */
+    .nav-logo {
+        height: 56px !important;
+    }
+
+    /* Reduce nav container padding so logo+hamburger fit cleanly */
+    .nav-container {
+        padding: 10px 16px;
     }
 
     /* --- Hero Section --- */
     .hero {
-        min-height: 100svh;
+        height: 100svh;
+        min-height: 580px;
+    }
+
+    /* Better video framing on mobile — pull back from extreme close-up */
+    .hero-video {
+        object-position: center center;
+    }
+
+    /* Stronger overlay gradient on mobile for text legibility */
+    .hero-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(11, 37, 69, 0.55) 0%,
+            rgba(11, 37, 69, 0.75) 50%,
+            rgba(11, 37, 69, 0.88) 100%
+        );
     }
 
     .hero-content {
@@ -797,6 +875,7 @@ ul {
         font-size: 1rem;
         margin-bottom: 28px;
         max-width: 100%;
+        opacity: 0.92;
     }
 
     .hero-btns {
@@ -1091,19 +1170,6 @@ ul {
     .section-container {
         padding: 40px 14px;
     }
-}
-
-/* =========================================
-   VIDEO BACKGROUND IN HERO
-   ========================================= */
-.hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
 }
 
 /* =========================================
