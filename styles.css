@@ -164,7 +164,7 @@ ul {
 }
 
 .navbar.scrolled {
-    padding: 5px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
 }
 
 .nav-container {
@@ -176,12 +176,22 @@ ul {
     align-items: center;
 }
 
+/* Logo container — clips the oversized image to a tight navbar-height slot */
+.logo {
+    overflow: hidden;
+    max-height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
 .logo a {
-    font-size: 1.5rem;
-    font-weight: 800;
-    font-family: var(--font-heading);
-    color: var(--primary-color);
-    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    line-height: 0;  /* kill inline-block gap */
+    padding: 0;
+    margin: 0;
 }
 
 .nav-logo {
@@ -191,7 +201,7 @@ ul {
 }
 
 .footer-logo {
-    height: 100px;
+    height: 180px;
     width: auto;
     object-fit: contain;
 }
@@ -1086,10 +1096,16 @@ ul {
         height: 160px !important;
     }
 
-    /* Reduce nav container padding so logo+hamburger fit cleanly */
-    .nav-container {
-        padding: 10px 16px;
+    /* Allow logo container to show the full mobile logo height */
+    .logo {
+        max-height: 160px !important;
     }
+
+    /* Remove extra vertical padding — height is driven by logo size */
+    .nav-container {
+        padding: 0 16px;
+    }
+
 
     /* --- Hero Section --- */
     .hero {
