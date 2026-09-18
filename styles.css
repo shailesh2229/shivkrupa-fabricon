@@ -170,7 +170,7 @@ ul {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px 20px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -185,7 +185,7 @@ ul {
 }
 
 .nav-logo {
-    height: 130px;
+    height: 280px;
     width: auto;
     object-fit: contain;
 }
@@ -1081,9 +1081,9 @@ ul {
         background: rgba(19,64,116,0.08);
     }
 
-    /* Logo size — compact for mobile navbar */
+    /* Logo size — mobile navbar */
     .nav-logo {
-        height: 72px !important;
+        height: 110px !important;
     }
 
     /* Reduce nav container padding so logo+hamburger fit cleanly */
