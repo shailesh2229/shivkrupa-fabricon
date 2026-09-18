@@ -545,6 +545,241 @@ ul {
 .bg-3 { background-image: url('https://images.unsplash.com/photo-1565514120036-c64ece81d1de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
 .bg-4 { background-image: url('https://images.unsplash.com/photo-1611078726514-61c015796c9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); }
 
+/* =========================================
+   Google Reviews Section
+   ========================================= */
+.reviews-section {
+    background: #f1f5f9;
+}
+
+/* Overall Rating Badge */
+.google-rating-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-radius: 16px;
+    padding: 24px 32px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.06);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.rating-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.google-logo-badge {
+    height: 28px;
+    width: auto;
+}
+
+.rating-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.overall-score {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+    font-family: var(--font-heading);
+}
+
+.overall-stars {
+    display: flex;
+    gap: 3px;
+    color: #FBBC05;
+    font-size: 1.1rem;
+}
+
+.rating-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: white;
+    color: #4285F4;
+    border: 2px solid #4285F4;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: var(--font-heading);
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.view-all-btn:hover {
+    background: #4285F4;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66,133,244,0.3);
+}
+
+/* Reviews Grid */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+/* Individual Review Card */
+.review-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.review-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(11,37,69,0.12);
+}
+
+/* Card Header: avatar + name + Google icon */
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.reviewer-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(0,0,0,0.08);
+    background: #f0f0f0;
+}
+
+.reviewer-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.reviewer-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.reviewer-info h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.review-time {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.new-badge {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.google-g-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Stars in each card */
+.review-stars {
+    display: flex;
+    gap: 3px;
+    color: #FBBC05;
+    font-size: 0.95rem;
+}
+
+/* Review text */
+.review-text {
+    color: #444;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    flex: 1;
+}
+
+/* Bottom CTA */
+.reviews-cta {
+    text-align: center;
+}
+
+.reviews-cta .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 36px;
+    font-size: 1rem;
+    min-height: 52px;
+}
+
+/* =========================================
+   Reviews Section — Mobile Responsive
+   ========================================= */
+@media (max-width: 992px) {
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .google-rating-badge {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .view-all-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .overall-score {
+        font-size: 2rem;
+    }
+}
+
 /* Contact Section */
 .contact-grid {
     display: grid;
