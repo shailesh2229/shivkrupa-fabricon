@@ -663,21 +663,39 @@ ul {
     gap: 12px;
 }
 
+/* --- Reviewer avatar: shared shape for both photo and letter --- */
 .reviewer-avatar {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    overflow: hidden;
     flex-shrink: 0;
-    border: 2px solid rgba(0,0,0,0.08);
-    background: #f0f0f0;
+    overflow: hidden;
+    background: #f0f0f0; /* placeholder while photo loads */
 }
 
+/* Real photo avatar */
 .reviewer-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
+}
+
+/* Letter avatar — reusable class for any reviewer without a photo */
+.review-avatar--letter {
+    background: #E91E8C;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    /* override the overflow:hidden so text renders cleanly */
+    overflow: visible;
+    font-family: var(--font-heading);
+    user-select: none;
 }
 
 .reviewer-info {
